@@ -2,16 +2,70 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_height="match_parent">
-
-    <com.liaction.ym23.qccustomviewstu.widget.size.CircleView
-        app:srcCompat="@drawable/mantou"
-        android:layout_width="wrap_content"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:hint="UserName"
+        app:met_helperText="占位提示信息"
+        app:met_helperTextAlwaysShown="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <View
-        android:background="@color/teal_200"
-        android:layout_width="230dp"
-        android:layout_height="230dp"/>
+    <FrameLayout
+        android:background="#30FF0000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.liaction.ym23.qccustomviewstu.widget.met.MaterialEditText
+            android:hint="请输入用户名"
+            app:floatLabelText="用户名"
+            app:useFloatLabel="true"
+            app:tipText="提示信息"
+            android:id="@+id/qcTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="显示"
+            android:id="@+id/showButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/hideButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="隐藏"
+            android:id="@+id/hideButton"
+            app:layout_constraintLeft_toRightOf="@+id/showButton"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/showButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="设置label 用户名"
+            android:id="@+id/setLabelUserName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/showButton"
+            app:layout_constraintRight_toLeftOf="@+id/setLabelPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="设置label 密码"
+            android:id="@+id/setLabelPassword"
+            app:layout_constraintLeft_toRightOf="@+id/setLabelUserName"
+            app:layout_constraintTop_toTopOf="@+id/setLabelUserName"
+            app:layout_constraintRight_toLeftOf="@id/setLabelNull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="设置label 为空"
+            android:id="@+id/setLabelNull"
+            app:layout_constraintLeft_toRightOf="@+id/setLabelPassword"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/setLabelUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

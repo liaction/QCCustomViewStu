@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "QCCustomViewStu"
 include ':app'
+include ':library_material_edit_text'
