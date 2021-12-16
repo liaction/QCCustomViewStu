@@ -4,26 +4,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:hint="UserName"
-        app:met_helperText="占位提示信息"
-        app:met_helperTextAlwaysShown="true"
+
+    <com.liaction.ym23.qccustomviewstu.widget.SwipeActionLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:background="#30FF0000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.liaction.ym23.qccustomviewstu.widget.met.MaterialEditText
-            android:hint="请输入用户名"
-            app:floatLabelText="用户名"
-            app:useFloatLabel="true"
-            app:tipText="提示信息"
-            android:id="@+id/qcTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </FrameLayout>
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:background="@color/teal_700"
+            android:orientation="horizontal"
+            android:layout_width="230dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="start action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="#FF0000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:text="end action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:text="start"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <View
+               android:background="#FF0000"
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"/>
+           <TextView
+               android:text="end"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+       </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.liaction.ym23.qccustomviewstu.widget.SwipeActionLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.AppCompatButton
