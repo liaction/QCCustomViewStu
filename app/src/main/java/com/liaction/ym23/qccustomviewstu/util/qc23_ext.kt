@@ -1,11 +1,13 @@
 package com.liaction.ym23.qccustomviewstu.util
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.NonNull
 
@@ -63,3 +65,9 @@ fun qcShowMeasureSpecInfo(measureSpec: Int, tipExtraMessageString: String = "qc2
     }
     qcLog("-------show measure spec info 【$tipExtraMessageString】 end -------")
 }
+
+fun Context.qcToast(message:String?){
+    Toast.makeText(this, "$message", Toast.LENGTH_SHORT).show()
+}
+
+fun View.qcToast(message: String?) = context.qcToast(message)

@@ -24,12 +24,12 @@ class QCMeasureView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        qcShowMeasureSpecInfo(widthMeasureSpec, tipExtraMessageString = "宽")
+        qcShowMeasureSpecInfo(widthMeasureSpec, tipExtraMessageString = "child 宽")
         val resultWidth = resolveSize(qcWidth.toInt(), widthMeasureSpec)
-        qcLog("qc width : ${qcWidth.toInt()} , result width : $resultWidth")
-        qcShowMeasureSpecInfo(heightMeasureSpec, tipExtraMessageString = "高")
+        qcLog("child qc width : ${qcWidth.toInt()} , result width : $resultWidth")
+        qcShowMeasureSpecInfo(heightMeasureSpec, tipExtraMessageString = "child 高")
         val resultHeight = resolveSize(qcHeight.toInt(), heightMeasureSpec)
-        qcLog("qc height : ${qcHeight.toInt()} , result height : $resultHeight")
+        qcLog("child qc height : ${qcHeight.toInt()} , result height : $resultHeight")
         setMeasuredDimension(resultWidth, resultHeight)
     }
 

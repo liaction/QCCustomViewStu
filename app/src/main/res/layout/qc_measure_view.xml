@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.liaction.ym23.qccustomviewstu.widget.measureAndLayout.QCMeasureViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="232820"
+        android:textSize="36sp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <com.liaction.ym23.qccustomviewstu.widget.measureAndLayout.QCMeasureView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="2"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:background="@android:color/holo_green_dark"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+    <TextView
+        android:text="3"
+        android:textSize="36sp"
+        android:gravity="right|center"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="300dp"
+        android:layout_height="230dp"/>
+    <TextView
+        android:text="end"
+        android:textSize="36sp"
+        android:gravity="bottom"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
+    <TextView
+        android:text="232820"
+        android:textSize="36sp"
+        android:background="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.liaction.ym23.qccustomviewstu.widget.measureAndLayout.QCMeasureViewGroup>
