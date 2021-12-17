@@ -11,7 +11,7 @@ import com.liaction.ym23.qccustomviewstu.widget.met.MaterialEditText
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_measure_view)
+        setContentView(R.layout.qc_scale_image_view)
         title = "Measure View"
     }
 }
