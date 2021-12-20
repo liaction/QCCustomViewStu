@@ -1,4 +1,4 @@
-package com.liaction.ym23.qccustomviewstu.widget
+package com.liaction.ym23.qccustomviewstu.widget.swipe
 
 import android.annotation.SuppressLint
 import android.content.Context
