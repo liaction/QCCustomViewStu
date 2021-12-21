@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.liaction.ym23.qccustomviewstu.widget.scale.QCScaleImageView
+    <com.liaction.ym23.qccustomviewstu.widget.scale.QCScaleImageView23
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"

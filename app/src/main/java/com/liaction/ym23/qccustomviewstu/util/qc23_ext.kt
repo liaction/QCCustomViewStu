@@ -74,7 +74,7 @@ fun Context.qcToast(message: String?) {
 fun View.qcToast(message: String?) = context.qcToast(message)
 fun OverScroller.fling(
     startX: Float, startY: Float, velocityX: Float, velocityY: Float,
-    minX: Float, maxX: Float, minY: Float, maxY: Float, overX: Float = 0f, overY: Float = 0f
+    minX: Float, maxX: Float, minY: Float, maxY: Float, overX: Float = 0f, overY: Float = overX
 ) {
     fling(
         startX.toInt(), startY.toInt(), velocityX.toInt(),
