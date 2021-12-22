@@ -18,8 +18,8 @@ class QCPullLayout @JvmOverloads constructor(
     private var actionHeight = 0
     private var downEventY = 0f
     private var lastScrollY = 0
-    private var triggerBottomTipEvent = false
-    private var triggerTopTipEvent = false
+    private var triggerRefreshBottomTipEvent = false
+    private var triggerRefreshTopTipEvent = false
     private var refreshing = false
 
 
@@ -66,15 +66,15 @@ class QCPullLayout @JvmOverloads constructor(
                     val dy = (downEventY - event.y + lastScrollY).toInt().coerceAtMost(0)
                         .coerceAtLeast(-actionHeight)
                     if (dy > -actionHeight / 2 && dy < 0) {
-                        triggerTopTipEvent = false
-                        if (!triggerBottomTipEvent) {
-                            triggerBottomTipEvent = true
+                        triggerRefreshTopTipEvent = false
+                        if (!triggerRefreshBottomTipEvent) {
+                            triggerRefreshBottomTipEvent = true
                             qcLog("继续下拉可刷新")
                         }
                     } else if (dy <= -actionHeight / 2) {
-                        triggerBottomTipEvent = false
-                        if (!triggerTopTipEvent) {
-                            triggerTopTipEvent = true
+                        triggerRefreshBottomTipEvent = false
+                        if (!triggerRefreshTopTipEvent) {
+                            triggerRefreshTopTipEvent = true
                             qcLog("松手进行刷新")
                         }
                     }
@@ -88,19 +88,19 @@ class QCPullLayout @JvmOverloads constructor(
                     if (scrollY.toFloat() > -actionHeight / 2f) {
                         scrollTo(0, 0)
                         refreshing = false
-                        if (triggerBottomTipEvent){
+                        if (triggerRefreshBottomTipEvent){
                             qcLog("放弃刷新")
                         }
                     } else {
                         scrollTo(0, -actionHeight)
-                        if (triggerTopTipEvent){
+                        if (triggerRefreshTopTipEvent){
                             qcLog("可以刷新")
                         }
                         refreshing = true
                         doRefresh()
                     }
-                    triggerBottomTipEvent = false
-                    triggerTopTipEvent = false
+                    triggerRefreshBottomTipEvent = false
+                    triggerRefreshTopTipEvent = false
                 }
             }
         }
