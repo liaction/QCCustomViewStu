@@ -22,9 +22,8 @@ import com.liaction.ym23.qccustomviewstu.widget.tab.QCTabLayout
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_tab_layout)
-        title = "QCTabLayout View"
-        doSomethingAfterInflateLayout()
+        setContentView(R.layout.qc_pull_layout)
+        title = "QCPullLayout View"
     }
 
     @SuppressLint("SetTextI18n")

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Rect
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -81,6 +82,10 @@ fun OverScroller.fling(
         velocityY.toInt(), minX.toInt(), maxX.toInt(), minY.toInt(), maxY.toInt(),
         overX.toInt(), overY.toInt()
     )
+}
+
+fun View.layout(rect: Rect){
+    layout(rect.left, rect.top, rect.right, rect.bottom)
 }
 
 /**

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MaterialEditText">
-        <attr name="useFloatLabel" format="boolean"/>
-        <attr name="floatLabelText" format="string"/>
-        <attr name="tipText" format="string"/>
+        <attr name="useFloatLabel" format="boolean" />
+        <attr name="floatLabelText" format="string" />
+        <attr name="tipText" format="string" />
+    </declare-styleable>
+    <declare-styleable name="QCPullLayout">
+        <attr name="qcPullLayout_orientation" format="enum">
+            <enum name="leftToRight" value="0" />
+            <enum name="rightToLeft" value="1" />
+            <enum name="topToBottom" value="2" />
+            <enum name="bottomToTop" value="3" />
+        </attr>
+        <attr name="qcPullLayout_header" format="reference"/>
+        <attr name="qcPullLayout_content" format="reference"/>
     </declare-styleable>
 </resources>
