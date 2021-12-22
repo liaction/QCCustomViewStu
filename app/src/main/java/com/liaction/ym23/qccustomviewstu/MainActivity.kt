@@ -11,7 +11,7 @@ import com.liaction.ym23.qccustomviewstu.widget.met.MaterialEditText
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_simple_two_pager)
-        title = "QCSimpleTwoViewPager View"
+        setContentView(R.layout.qc_pull_layout)
+        title = "QCPullLayout View"
     }
 }
