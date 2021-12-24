@@ -3,27 +3,19 @@ package com.liaction.ym23.qccustomviewstu
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.marginLeft
-import androidx.core.view.setMargins
 import androidx.core.view.setPadding
-import androidx.core.widget.TextViewCompat
 import com.liaction.ym23.qccustomviewstu.util.dpx
 import com.liaction.ym23.qccustomviewstu.util.qcChinaProvince
-import com.liaction.ym23.qccustomviewstu.util.spx
-import com.liaction.ym23.qccustomviewstu.widget.met.MaterialEditText
 import com.liaction.ym23.qccustomviewstu.widget.tab.QCTabLayout
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_pull_layout)
-        title = "QCPullLayout View"
+        setContentView(R.layout.qc_child_parent_layout)
+        title = "QCChildParent View"
     }
 
     @SuppressLint("SetTextI18n")
