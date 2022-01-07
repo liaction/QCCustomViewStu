@@ -15,4 +15,9 @@
         <attr name="qcPullLayout_header" format="reference"/>
         <attr name="qcPullLayout_content" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="QCMET">
+        <attr name="QC_useFloatLabel" format="boolean"/>
+        <attr name="QC_floatLabelText" format="string"/>
+        <attr name="QC_helperText" format="string"/>
+    </declare-styleable>
 </resources>

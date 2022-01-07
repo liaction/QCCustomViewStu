@@ -14,8 +14,8 @@ import com.liaction.ym23.qccustomviewstu.widget.tab.QCTabLayout
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_camera_view)
-        title = "QCCameraView"
+        setContentView(R.layout.qc_material_edit_text)
+        title = "QCMaterialEditText"
     }
 
     @SuppressLint("SetTextI18n")

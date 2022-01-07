@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/et"
+        app:layout_constraintLeft_toLeftOf="@id/QCMet"
+        app:layout_constraintRight_toRightOf="@id/QCMet"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="EditText"
+        app:layout_constraintBottom_toTopOf="@id/QCMet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.liaction.ym23.qccustomviewstu.widget.metext.QCMaterialEditText
+        android:id="@+id/QCMet"
+        android:hint="QCMaterialEditText"
+        app:QC_floatLabelText="FloatLabelText_ok"
+        app:QC_helperText="helperText_ok"
+        app:QC_useFloatLabel="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
