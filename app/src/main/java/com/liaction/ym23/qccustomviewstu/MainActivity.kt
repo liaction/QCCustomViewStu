@@ -14,31 +14,31 @@ import com.liaction.ym23.qccustomviewstu.widget.tab.QCTabLayout
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qc_material_edit_text)
-        title = "QCMaterialEditText"
+        setContentView(R.layout.qc_tiger_year_tablayout)
+        title = "QCTabLayout"
+        doSomethingAfterInflateLayout(findViewById<QCTabLayout>(R.id.qcTabLayout))
     }
 
     @SuppressLint("SetTextI18n")
-    private fun doSomethingAfterInflateLayout() {
+    private fun doSomethingAfterInflateLayout(tabLayout: ViewGroup) {
         val colorList = listOf(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.CYAN)
-        val qcTabLayout = findViewById<QCTabLayout>(R.id.qcTabLayout)
         qcChinaProvince.forEachIndexed { index, province ->
             val textViewCompat = AppCompatTextView(this)
             with(textViewCompat) {
                 text = "[${index + 1}] $province"
                 setPadding(((index + 1) * 2.dpx).toInt())
+//                setPadding(10.dpx.toInt())
                 setTextColor(Color.BLACK)
                 textSize = 16f
                 setBackgroundColor(colorList.random())
             }
-            qcTabLayout.addView(
+            tabLayout.addView(
                 textViewCompat,
                 ViewGroup.MarginLayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 ).apply {
-//                    setMargins(8.dpx.toInt())
-//                    setMargins(10.dpx.toInt(), 10.dpx.toInt(), 23.dpx.toInt(), 0)
+                    setMargins(10.dpx.toInt(), 10.dpx.toInt(), 10.dpx.toInt(), 10.dpx.toInt())
                 }
             )
         }
