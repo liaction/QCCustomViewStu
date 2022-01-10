@@ -149,7 +149,10 @@ class QCTabLayout @JvmOverloads constructor(
         )
         if (child is TextView) {
             val text = child.text
-            qcLog("$text : $childBound : [${childMarginLayoutParams.leftMargin},${childMarginLayoutParams.topMargin},${childMarginLayoutParams.rightMargin},${childMarginLayoutParams.bottomMargin}]")
+            qcLog("$text : $childBound : [${childMarginLayoutParams.leftMargin}," +
+                    "${childMarginLayoutParams.topMargin}," +
+                    "${childMarginLayoutParams.rightMargin}," +
+                    "${childMarginLayoutParams.bottomMargin}]")
         }
         return childBound
     }
