@@ -27,6 +27,23 @@ val Number.spx: Float
         Resources.getSystem().displayMetrics
     )
 
+val Number.isPositive: Boolean
+    get() = this.toDouble() > 0.0
+
+val Number.isNegative: Boolean
+    get() = this.toDouble() < 0.0
+
+val Number.isNotPositive: Boolean
+    get() = !isPositive
+
+val Number.isNotNegative: Boolean
+    get() = !isNegative
+
+val Number.isZero: Boolean
+    get() = this.toDouble() == 0.0
+
+val Number.isNotZero: Boolean
+    get() = !isZero
 
 fun csLog(message: String?) {
     Log.e("QC23", "-----> 【$message】")
@@ -37,7 +54,7 @@ fun qcLog(message: String?) {
 }
 
 fun qcGetImageFromSource(
-    width: Int,
+    width: Number,
     @NonNull resources: Resources,
     @DrawableRes drawableResId: Int
 ): Bitmap {
@@ -46,7 +63,7 @@ fun qcGetImageFromSource(
     BitmapFactory.decodeResource(resources, drawableResId, options)
     options.inJustDecodeBounds = false
     options.inDensity = options.outWidth
-    options.inTargetDensity = width
+    options.inTargetDensity = width.toInt()
     return BitmapFactory.decodeResource(resources, drawableResId, options)
 }
 
@@ -84,7 +101,7 @@ fun OverScroller.fling(
     )
 }
 
-fun View.layout(rect: Rect){
+fun View.layout(rect: Rect) {
     layout(rect.left, rect.top, rect.right, rect.bottom)
 }
 
