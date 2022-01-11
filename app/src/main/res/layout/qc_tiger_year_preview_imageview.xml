@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView.QCPreviewImageView
+    <com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView.QCScaleImageView
         android:id="@+id/qcPreviewImageView"
         android:background="@color/teal_700"
         app:layout_constraintLeft_toLeftOf="parent"

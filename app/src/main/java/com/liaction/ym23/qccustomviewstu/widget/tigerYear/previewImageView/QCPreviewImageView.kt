@@ -1,18 +1,22 @@
 package com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
 import com.liaction.ym23.qccustomviewstu.R
 import com.liaction.ym23.qccustomviewstu.util.dpx
 import com.liaction.ym23.qccustomviewstu.util.qcGetImageFromSource
 import kotlin.math.min
 
+@Deprecated("废弃", level = DeprecationLevel.ERROR, replaceWith = ReplaceWith("QCScaleImageView",
+    "com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView.QCScaleImageView"))
 class QCPreviewImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
@@ -39,6 +43,14 @@ class QCPreviewImageView @JvmOverloads constructor(
 
     private var bitmapOffsetX = 0f
     private var bitmapOffsetY = 0f
+    private var bitmapLastOffsetX = 0f
+    private var bitmapLastOffsetY = 0f
+
+    private var bitmapOverScroller = OverScroller(context)
+
+    private val bitmapOverScrollerRunnable = Runnable {
+
+    }
 
     private var bitmapScaleAnimatorPercent = 0f
         set(value) {
@@ -53,10 +65,14 @@ class QCPreviewImageView @JvmOverloads constructor(
     private val gestureDetector = GestureDetectorCompat(context,
         object : GestureDetector.SimpleOnGestureListener() {
             override fun onDown(e: MotionEvent?): Boolean {
+                bitmapLastOffsetX = bitmapOffsetX
+                bitmapLastOffsetY = bitmapOffsetY
                 return true
             }
 
-            override fun onDoubleTap(e: MotionEvent?): Boolean {
+            override fun onDoubleTap(event: MotionEvent): Boolean {
+                bitmapScaleCenterX = event.x
+                bitmapScaleCenterY = event.y
                 if (bitmapScaleRationForCurrent !=
                     bitmapScaleRationForBig
                 ) {
@@ -68,7 +84,57 @@ class QCPreviewImageView @JvmOverloads constructor(
                 }
                 return true
             }
+
+            override fun onScroll(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+//                qcLog("[$distanceX,${e1.x-e2.y}],$distanceY, [${e1.x},${e1.y}], [${e2.x},${e2.y}]")
+                if (bitmapScaleRationForCurrent != bitmapScaleRationForSmall) {
+                    bitmapOffsetX = e2.x - e1.x + bitmapLastOffsetX
+                    bitmapOffsetY = e2.y - e1.y + bitmapLastOffsetY
+                    fixBitmapRange()
+                    invalidate()
+                }
+                return false
+            }
+
+            override fun onFling(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                val overScrollerMaxX =
+                    ((bitmapWidth * bitmapScaleRationForCurrent - viewWidth) / 2f).toInt()
+                val overScrollerMaxY =
+                    ((bitmapHeight * bitmapScaleRationForCurrent - viewHeight) / 2f)
+                        .toInt()
+                bitmapOverScroller.fling(
+                    bitmapOffsetX.toInt(), bitmapOffsetY.toInt(), velocityX.toInt(),
+                    velocityY.toInt(),
+                    -overScrollerMaxX, overScrollerMaxX,
+                    -overScrollerMaxY, overScrollerMaxY
+                )
+//                doWhenFling()
+                return false
+            }
         })
+
+    private fun fixBitmapRange(){
+        val overScrollerMaxX =
+            ((bitmapWidth * bitmapScaleRationForCurrent - viewWidth) / 2f)
+        val overScrollerMaxY =
+            ((bitmapHeight * bitmapScaleRationForCurrent - viewHeight) / 2f)
+        bitmapOffsetX = bitmapOffsetX.coerceAtMost(overScrollerMaxX).coerceAtLeast(-overScrollerMaxX)
+        bitmapOffsetY = bitmapOffsetY.coerceAtMost(overScrollerMaxY).coerceAtLeast(-overScrollerMaxY)
+    }
+
+    private fun doWhenFling() {
+        postOnAnimation(bitmapOverScrollerRunnable)
+    }
 
     private val bitmap = qcGetImageFromSource(230.dpx.toInt(), resources, R.drawable.mantou).apply {
         if (!isRecycled) {
@@ -95,17 +161,18 @@ class QCPreviewImageView @JvmOverloads constructor(
         bitmapScaleRationForBig =
             (if (bitmapScaleRationForSmall == widthRation) heightRation else widthRation)
         bitmapScaleRationForBig *= bitmapScaleRationForSalt
-        bitmapScaleRationForCurrent = bitmapScaleRationForBig
+        bitmapScaleRationForCurrent = bitmapScaleRationForSmall
         bitmapScaleRationDelta = bitmapScaleRationForBig - bitmapScaleRationForSmall
     }
 
     override fun onDraw(canvas: Canvas) {
         canvas.save()
+        canvas.translate(bitmapOffsetX * bitmapScaleAnimatorPercent, bitmapOffsetY * bitmapScaleAnimatorPercent)
         canvas.scale(
             bitmapScaleRationForCurrent,
             bitmapScaleRationForCurrent,
-            viewCenterX,
-            viewCenterY
+            bitmapScaleCenterX,
+            bitmapScaleCenterY
         )
         canvas.drawBitmap(
             bitmap, bitmapCenterOffsetX,
@@ -114,6 +181,7 @@ class QCPreviewImageView @JvmOverloads constructor(
         canvas.restore()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return gestureDetector.onTouchEvent(event)
     }

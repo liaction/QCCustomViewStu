@@ -9,13 +9,12 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.setPadding
 import com.liaction.ym23.qccustomviewstu.util.dpx
 import com.liaction.ym23.qccustomviewstu.util.qcChinaProvince
-import com.liaction.ym23.qccustomviewstu.widget.tab.QCTabLayout
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.qc_tiger_year_preview_imageview)
-        title = "QCTabLayout"
+        title = "QCScaleImageView"
 //        doSomethingAfterInflateLayout(findViewById<QCTabLayout>(R.id.qcTabLayout))
     }
 
