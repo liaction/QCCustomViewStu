@@ -16,7 +16,7 @@ import com.liaction.ym23.qccustomviewstu.util.qcGetImageFromSource
 import kotlin.math.min
 
 @Deprecated("废弃", level = DeprecationLevel.ERROR, replaceWith = ReplaceWith("QCScaleImageView",
-    "com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView.QCScaleImageView"))
+    "com.liaction.ym23.qccustomviewstu.widget.tigerYear.previewImageView.qc.QCScaleImageView"))
 class QCPreviewImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
